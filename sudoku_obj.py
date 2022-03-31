@@ -10,12 +10,12 @@ class Sudoku:
 
     def make_board(self, difficulty):
 
-        if difficulty == "easy":
-            file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\easy\\easy_sudoku1.txt", "r")
-        elif difficulty == "medium":
-            file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\medium\\medium_sudoku1.txt", "r")
-        else:
-            file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\hard\\hard_sudoku1.txt", "r")
+       # if difficulty == "easy":
+        #    file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\easy\\easy_sudoku1.txt", "r")
+        #elif difficulty == "medium":
+         #   file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\medium\\medium_sudoku1.txt", "r")
+        #else:
+        #    file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\hard\\hard_sudoku1.txt", "r")
         board = [[5,3,0,0,7,0,0,0,0],
         [6,0,0,1,9,5,0,0,0],
         [0,9,8,0,0,0,0,6,0],
