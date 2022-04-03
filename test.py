@@ -1,16 +1,16 @@
-
+import time
 
 global board
-board = [[1,0,7,6,8,3,0,4,0],
-[0,4,2,9,1,0,0,0,6],
-[0,6,8,0,0,7,0,3,0],
-[0,0,0,1,3,2,7,9,0],
-[0,0,0,0,0,8,0,2,1],
-[2,0,9,7,6,0,3,8,0],
-[4,7,3,0,0,0,0,0,8],
-[8,0,0,0,0,0,0,6,0],
-[9,0,0,0,7,0,0,0,3]]
 
+board = [[8,0,0,0,0,0,0,0,0],
+[0,0,3,6,0,0,0,0,0],
+[0,7,0,0,9,0,2,0,0],
+[0,5,0,0,0,7,0,0,0],
+[0,0,0,0,4,5,7,0,0],
+[0,0,0,1,0,0,0,3,0],
+[0,0,1,0,0,0,0,6,8],
+[0,0,8,5,0,0,0,1,0],
+[0,9,0,0,0,0,4,0,0]]
 
 
 def check_possible(y, x, n):
@@ -30,25 +30,38 @@ def check_possible(y, x, n):
                 return False
     return True
 
-def solve():
+def is_solved():
     global board
+    for y in range(9):
+        for x in range(9):
+            if board[y][x] == 0:
+                return False
+    return True
+
+def solve():
+    
+    global board
+    start_time = time.time()
     for y in range(9):
         for x in range(9):
             if board[y][x] == 0:
                 for n in range(1,10):
                     if check_possible(y,x,n):
                         board[y][x] = n
+                        draw_sudoku()
+                        time.sleep(0.1)
                         solve()
                         board[y][x] = 0
                 return
-            
+
+
     draw_sudoku()
+    print("Solved in " + "--- %s seconds ---" % (time.time() - start_time))
+    
+    
+    input()
     
         
-
-
-
-
 def draw_sudoku():
     global board
     print("+" + "---+"*9)
@@ -59,5 +72,10 @@ def draw_sudoku():
         else:
             print("+" + "   +"*9)
 
+start_time = time.time()
+print(start_time)
+draw_sudoku()
+time.sleep(0.3)
 solve()
+print(start_time)
 
