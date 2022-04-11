@@ -1,15 +1,44 @@
 
 
 global board
-board = [[1,0,7,6,8,3,0,4,0],
-[0,4,2,9,1,0,0,0,6],
-[0,6,8,0,0,7,0,3,0],
-[0,0,0,1,3,2,7,9,0],
-[0,0,0,0,0,8,0,2,1],
-[2,0,9,7,6,0,3,8,0],
-[4,7,3,0,0,0,0,0,8],
-[8,0,0,0,0,0,0,6,0],
-[9,0,0,0,7,0,0,0,3]]
+#board = [[0,0,0,0,0,0,0,0,0],
+       #     [0,0,0,0,0,0,0,0,0],
+      #      [0,0,0,0,0,0,0,0,0],
+     #       [0,0,0,0,0,0,0,0,0],
+    #        [0,0,0,0,0,0,0,0,0],
+   #         [0,0,0,0,0,0,0,0,0],
+  #          [0,0,0,0,0,0,0,0,0],
+ #           [0,0,0,0,0,0,0,0,0],
+#            [0,0,0,0,0,0,0,0,0]]
+
+board = [[5,3,0,0,7,0,0,0,0],
+    [6,0,0,1,9,5,0,0,0],
+    [0,9,8,0,0,0,0,6,0],
+    [8,0,0,0,6,0,0,0,3],
+    [4,0,0,8,0,3,0,0,1],
+    [7,0,0,0,2,0,0,0,6],
+    [0,6,0,0,0,0,2,8,0],
+    [0,0,0,4,1,9,0,0,5],
+    [0,0,0,0,8,0,0,7,9]]
+
+def generate():
+    global board
+    import random
+    #draw_sudoku()
+    random_row = random.randint(0,8)
+    random_column = random.randint(0,8)
+    if board[random_row][random_column] == 0:
+        for n in range(10):
+            random_number = random.randint(1,9) 
+            if check_possible(random_row, random_column, random_number):
+                board[random_row][random_column] = random_number
+                generate()
+                board[random_row][random_column] = 0
+
+        
+        
+    draw_sudoku()
+
 
 
 
@@ -43,6 +72,7 @@ def solve():
                 return
             
     draw_sudoku()
+    input()
     
         
 
@@ -58,6 +88,6 @@ def draw_sudoku():
             print("+" + "---+"*9)
         else:
             print("+" + "   +"*9)
-
+draw_sudoku()
 solve()
 
