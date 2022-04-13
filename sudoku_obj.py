@@ -1,6 +1,3 @@
-import enum
-from re import X
-
 
 class Sudoku:
 
@@ -25,6 +22,7 @@ class Sudoku:
         [0,6,0,0,0,0,2,8,0],
         [0,0,0,4,1,9,0,0,5],
         [0,0,0,0,8,0,0,7,9]]
+        
         #board_f = file.read()
         #board_f = board_f.split("\n") #split the rows with enter
         #for line in board_f: #
@@ -46,10 +44,6 @@ class Sudoku:
                 print("+" + "---+"*9)
             else:
                 print("+" + "   +"*9)
-
-
-        # jotain testailua kello 23:17 yöllä
-
 
     
     def check_possible(self, y, x, n):
@@ -81,7 +75,8 @@ class Sudoku:
                             self.draw()
                             self.solve()
                             self.__board[y][x] = 0
-                    return 
+                    return
+                    
         
 
 sudoku = Sudoku()
