@@ -1,22 +1,5 @@
 import pygame
-
-background_color = (153, 204, 255)
-highlighted_color = (100,100,100)
-original_num_color = (0, 0, 0)
-buffer = 5
-
-grid  = [[5,3,0,0,7,0,0,0,0],
-            [6,0,0,1,9,5,0,0,0],
-            [0,9,8,0,0,0,0,6,0],
-            [8,0,0,0,6,0,0,0,3],
-            [4,0,0,8,0,3,0,0,1],
-            [7,0,0,0,2,0,0,0,6],
-            [0,6,0,0,0,0,2,8,0],
-            [0,0,0,4,1,9,0,0,5],
-            [0,0,0,0,8,0,0,7,9]]
-
-
-original_sudoku = [[grid[row][col] for col in range(len(grid[0]))] for row in range(len(grid))]
+import sudoku
 
 def user_input(screen, position):
     row,col = position[1], position[0]
@@ -81,7 +64,7 @@ def solve(screen):
                         value = font.render(str(n), True, (0,0,0))
                         screen.blit(value, ((x+1)*50 +15,(y+1)*50))
                         pygame.display.update()
-                        #pygame.time.delay(25)
+                        pygame.time.delay(25)
                         solve(screen)
                         
                         if is_solved():
@@ -117,7 +100,7 @@ def main():
                 screen.blit(value, ((j+1)*50 + 15, (i+1)*50 ))
     pygame.display.update()
             
-    
+    solve(screen)
     while True: 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
@@ -127,9 +110,5 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
-                    solve(screen)
    
 main()

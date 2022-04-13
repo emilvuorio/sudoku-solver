@@ -1,17 +1,13 @@
-<<<<<<< HEAD
-=======
+
 from random import randint, random
 import time
 
 
-
->>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
-
 class Sudoku:
 
     def __init__(self):
-        pass
-        #self.__board = self
+        
+        self.__board = self
 
     def make_board(self, difficulty):
 
