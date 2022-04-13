@@ -1,42 +1,39 @@
-
-
+global amount
+amount = 0
 global board
 #board = [[0,0,0,0,0,0,0,0,0],
-       #     [0,0,0,0,0,0,0,0,0],
-      #      [0,0,0,0,0,0,0,0,0],
-     #       [0,0,0,0,0,0,0,0,0],
-    #        [0,0,0,0,0,0,0,0,0],
-   #         [0,0,0,0,0,0,0,0,0],
-  #          [0,0,0,0,0,0,0,0,0],
  #           [0,0,0,0,0,0,0,0,0],
-#            [0,0,0,0,0,0,0,0,0]]
+  #          [0,0,0,0,0,0,0,0,0],
+   ##        [0,0,0,0,0,0,0,0,0],
+     #       [0,0,0,0,0,0,0,0,0],
+      #      [0,0,0,0,0,0,0,0,0],
+       #     [0,0,0,0,0,0,0,0,0],
+        #    [0,0,0,0,0,0,0,0,0]]
 
-board = [[5,3,0,0,7,0,0,0,0],
-    [6,0,0,1,9,5,0,0,0],
-    [0,9,8,0,0,0,0,6,0],
-    [8,0,0,0,6,0,0,0,3],
-    [4,0,0,8,0,3,0,0,1],
-    [7,0,0,0,2,0,0,0,6],
-    [0,6,0,0,0,0,2,8,0],
-    [0,0,0,4,1,9,0,0,5],
-    [0,0,0,0,8,0,0,7,9]]
+board = [[4,0,0,1,0,0,0,0,0],
+[0,0,0,0,0,0,0,5,0],
+[0,7,0,0,4,0,3,6,0],
+[0,2,0,0,0,0,0,0,1],
+[0,0,0,0,3,0,0,0,5],
+[0,0,6,8,0,0,2,3,0],
+[0,0,8,0,0,9,0,0,0],
+[0,0,0,0,0,0,0,0,2],
+[0,6,0,0,1,0,7,4,0]]
 
 def generate():
     global board
     import random
-    #draw_sudoku()
-    random_row = random.randint(0,8)
-    random_column = random.randint(0,8)
-    if board[random_row][random_column] == 0:
-        for n in range(10):
-            random_number = random.randint(1,9) 
-            if check_possible(random_row, random_column, random_number):
-                board[random_row][random_column] = random_number
-                generate()
-                board[random_row][random_column] = 0
+    draw_sudoku()
+  
+    for i in range(20):
+        random_row = random.randint(0,8)
+        random_column = random.randint(0,8)
+        if board[random_row][random_column] == 0:
+            for n in range(10):
+                random_number = random.randint(1,9) 
+                if check_possible(random_row, random_column, random_number):
+                    board[random_row][random_column] = random_number
 
-        
-        
     draw_sudoku()
 
 
@@ -60,19 +57,21 @@ def check_possible(y, x, n):
     return True
 
 def solve():
+    global amount
     global board
+    import time
     for y in range(9):
         for x in range(9):
             if board[y][x] == 0:
                 for n in range(1,10):
                     if check_possible(y,x,n):
                         board[y][x] = n
+                        #draw_sudoku()
+                        #time.sleep(0.1)
                         solve()
                         board[y][x] = 0
                 return
-            
     draw_sudoku()
-    input()
     
         
 
@@ -89,5 +88,6 @@ def draw_sudoku():
         else:
             print("+" + "   +"*9)
 draw_sudoku()
+#generate()
 solve()
 
