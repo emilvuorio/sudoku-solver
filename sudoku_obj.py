@@ -1,7 +1,6 @@
+
 from random import randint, random
 import time
-
-
 
 
 class Sudoku:
@@ -12,6 +11,7 @@ class Sudoku:
 
     def make_board(self, difficulty):
 
+<<<<<<< HEAD
         if difficulty == "easy":
             file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\easy\\easy_sudoku1.txt", "r")
         elif difficulty == "medium":
@@ -27,6 +27,24 @@ class Sudoku:
         [0,0,8,0,0,9,0,0,0],
         [0,0,0,0,0,0,0,0,2],
         [0,6,0,0,1,0,7,4,0]]
+=======
+       # if difficulty == "easy":
+        #    file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\easy\\easy_sudoku1.txt", "r")
+        #elif difficulty == "medium":
+         #   file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\medium\\medium_sudoku1.txt", "r")
+        #else:
+        #    file = open("C:\\Koulu\OOP\\sudoku_solver\\sudokus\\hard\\hard_sudoku1.txt", "r")
+        board = [[5,3,0,0,7,0,0,0,0],
+        [6,0,0,1,9,5,0,0,0],
+        [0,9,8,0,0,0,0,6,0],
+        [8,0,0,0,6,0,0,0,3],
+        [4,0,0,8,0,3,0,0,1],
+        [7,0,0,0,2,0,0,0,6],
+        [0,6,0,0,0,0,2,8,0],
+        [0,0,0,4,1,9,0,0,5],
+        [0,0,0,0,8,0,0,7,9]]
+        
+>>>>>>> eda0b8139d6701d811c8445cfa7ff26a263f7d33
         #board_f = file.read()
         #board_f = board_f.split("\n") #split the rows with enter
         #for line in board_f: #
@@ -49,10 +67,6 @@ class Sudoku:
                 print("+" + "---+"*9)
             else:
                 print("+" + "   +"*9)
-
-
-        # jotain testailua kello 23:17 yöllä
-
 
     
     def check_possible(self, row, column, n):
@@ -84,6 +98,11 @@ class Sudoku:
                             #self.draw()
                             #time.sleep(0.3)
                             self.solve()
+<<<<<<< HEAD
+                            self.__board[y][x] = 0
+                    return
+                    
+=======
                             self.__board[row][cell] = 0
                     return
         #self.draw()
@@ -102,6 +121,7 @@ class Generator(Sudoku):
                         [0,0,0,0,0,0,0,0,0],
                         [0,0,0,0,0,0,0,0,0],
                         [0,0,0,0,0,0,0,0,0]]
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
         
 
     def generate(self):

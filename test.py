@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 global amount
 amount = 0
 global board
@@ -36,7 +37,21 @@ def generate():
 
     draw_sudoku()
 
+=======
+import time
 
+global board
+>>>>>>> eda0b8139d6701d811c8445cfa7ff26a263f7d33
+
+board = [[8,0,0,0,0,0,0,0,0],
+[0,0,3,6,0,0,0,0,0],
+[0,7,0,0,9,0,2,0,0],
+[0,5,0,0,0,7,0,0,0],
+[0,0,0,0,4,5,7,0,0],
+[0,0,0,1,0,0,0,3,0],
+[0,0,1,0,0,0,0,6,8],
+[0,0,8,5,0,0,0,1,0],
+[0,9,0,0,0,0,4,0,0]]
 
 
 def check_possible(y, x, n):
@@ -76,8 +91,13 @@ def solve():
         
 
 
-
-
+    draw_sudoku()
+    print("Solved in " + "--- %s seconds ---" % (time.time() - start_time))
+    
+    
+    input()
+    
+        
 def draw_sudoku():
     global board
     print("+" + "---+"*9)
@@ -87,7 +107,15 @@ def draw_sudoku():
             print("+" + "---+"*9)
         else:
             print("+" + "   +"*9)
+
+start_time = time.time()
+print(start_time)
 draw_sudoku()
+<<<<<<< HEAD
 #generate()
+=======
+time.sleep(0.3)
+>>>>>>> eda0b8139d6701d811c8445cfa7ff26a263f7d33
 solve()
+print(start_time)
 
