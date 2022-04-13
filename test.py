@@ -1,6 +1,47 @@
 import time
 
 global board
+<<<<<<< HEAD
+=======
+#board = [[0,0,0,0,0,0,0,0,0],
+       #     [0,0,0,0,0,0,0,0,0],
+      #      [0,0,0,0,0,0,0,0,0],
+     #       [0,0,0,0,0,0,0,0,0],
+    #        [0,0,0,0,0,0,0,0,0],
+   #         [0,0,0,0,0,0,0,0,0],
+  #          [0,0,0,0,0,0,0,0,0],
+ #           [0,0,0,0,0,0,0,0,0],
+#            [0,0,0,0,0,0,0,0,0]]
+
+board = [[5,3,0,0,7,0,0,0,0],
+    [6,0,0,1,9,5,0,0,0],
+    [0,9,8,0,0,0,0,6,0],
+    [8,0,0,0,6,0,0,0,3],
+    [4,0,0,8,0,3,0,0,1],
+    [7,0,0,0,2,0,0,0,6],
+    [0,6,0,0,0,0,2,8,0],
+    [0,0,0,4,1,9,0,0,5],
+    [0,0,0,0,8,0,0,7,9]]
+
+def generate():
+    global board
+    import random
+    #draw_sudoku()
+    random_row = random.randint(0,8)
+    random_column = random.randint(0,8)
+    if board[random_row][random_column] == 0:
+        for n in range(10):
+            random_number = random.randint(1,9) 
+            if check_possible(random_row, random_column, random_number):
+                board[random_row][random_column] = random_number
+                generate()
+                board[random_row][random_column] = 0
+
+        
+        
+    draw_sudoku()
+
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
 
 board = [[8,0,0,0,0,0,0,0,0],
 [0,0,3,6,0,0,0,0,0],
@@ -34,6 +75,7 @@ def is_solved():
     global board
     for y in range(9):
         for x in range(9):
+<<<<<<< HEAD
             if board[y][x] == 0:
                 return False
     return True
@@ -44,15 +86,25 @@ def solve():
     start_time = time.time()
     for y in range(9):
         for x in range(9):
+=======
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
             if board[y][x] == 0:
                 for n in range(1,10):
                     if check_possible(y,x,n):
                         board[y][x] = n
+<<<<<<< HEAD
                         draw_sudoku()
                         time.sleep(0.1)
+=======
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
                         solve()
                         board[y][x] = 0
                 return
+            
+    draw_sudoku()
+    input()
+    
+        
 
 
     draw_sudoku()
@@ -71,6 +123,7 @@ def draw_sudoku():
             print("+" + "---+"*9)
         else:
             print("+" + "   +"*9)
+<<<<<<< HEAD
 
 start_time = time.time()
 print(start_time)
@@ -78,4 +131,8 @@ draw_sudoku()
 time.sleep(0.3)
 solve()
 print(start_time)
+=======
+draw_sudoku()
+solve()
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
 

@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+=======
+from random import randint, random
+import time
+
+
+
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
 
 class Sudoku:
 
     def __init__(self):
-
-        self.__board = self
+        pass
+        #self.__board = self
 
     def make_board(self, difficulty):
 
@@ -36,6 +44,7 @@ class Sudoku:
 
 
     def draw(self):
+
         # fancy way to make sudoku pretty
         print("+" + "---+"*9)
         for i, row in enumerate(self.__board):
@@ -46,19 +55,19 @@ class Sudoku:
                 print("+" + "   +"*9)
 
     
-    def check_possible(self, y, x, n):
+    def check_possible(self, row, column, n):
         for i in range(0,9):
-            if self.__board[y][i] == n:
+            if self.__board[row][i] == n:
                 return False
         for i in range(0,9):
-            if self.__board[i][x] == n:
+            if self.__board[i][column] == n:
                 return False
         
-        x0 = (x // 3) * 3
-        y0 = (y // 3) * 3
+        column_square = (column // 3) * 3
+        row_square = (row // 3) * 3
         for i in range(0,3):
             for j in range(0,3):
-                if self.__board[y0+i][x0+j] == n:
+                if self.__board[row_square+i][column_square+j] == n:
                     return False
         return True
         
@@ -66,20 +75,58 @@ class Sudoku:
 
 
     def solve(self):
-        for y in range(0,9):
-            for x in range(0,9):
-                if self.__board[y][x] == 0:
+        for row in range(0,9):
+            for cell in range(0,9):
+                if self.__board[row][cell] == 0:
                     for n in range(1,10):
-                        if self.check_possible(y,x,n):
-                            self.__board[y][x] = n
-                            self.draw()
+                        if self.check_possible(row,cell,n):
+                            self.__board[row][cell] = n
+                            #self.draw()
+                            #time.sleep(0.3)
                             self.solve()
+<<<<<<< HEAD
                             self.__board[y][x] = 0
                     return
                     
+=======
+                            self.__board[row][cell] = 0
+                    return
+        #self.draw()
+        input()
+
+class Generator(Sudoku):
+    
+    def __init__(self):
+        super().__init__()
+        self.__board = [[0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0]]
+>>>>>>> 7ad2650042241a2cf9e0e7d793749a56a496ddee
         
+
+    def generate(self):
+        import random
+        random_row = random.randint(0,8)
+        random_column = random.randint(0,8)
+        random_number = random.randint(1,9)
+        
+        self.__board[random_row][random_column] = random_number
+
+
+        super(Generator, self).draw()
+
 
 sudoku = Sudoku()
 sudoku.make_board("easy")
 sudoku.solve()
 sudoku.draw()
+
+generator = Generator()
+generator.generate()
+generator.draw()
