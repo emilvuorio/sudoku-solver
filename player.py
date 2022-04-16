@@ -1,44 +1,78 @@
 class Player:
+    # All players have the same difficulty
+    def __init__(self):
+        self.__difficulty 
 
-    def __init__(self, highscore, NOG):
-        self.__highscore = highscore
-        self.number_of_games = NOG
+    def set_difficulty(self,  difficulty):
+        self.__difficulty = difficulty
 
-    def set_highscore(self, highscore):
-        self. __highscore = highscore
-    
-    def get_highscore(self):
-        return self.__highscore
-    
-    def set_number_of_games(self, NOG):
-        self.number_of_games = NOG
+    def get_difficulty(self):
 
-    def get_number_of_games(self):
+        return self.__difficulty
 
-        return self.number_of_games
 
 class Emil(Player):
 
-    def __init__(self, highscore, NOG, player_name):
-        super().__init__(highscore, NOG)
-        self.__player_name = player_name
+    def __init__(self):
+        super().__init__()
+        self.__player_name = self
 
     def __str__(self):
 
-        return str(str(self.get_highscore()) + str(self.get_number_of_games()) + self.get_player_name())
+        return str(self.get_player_name() + " " + self.get_highscore())
 
-    def set_player_name(self, player_name):
+    def set_player_name(self):
 
-        self.__player_name = player_name
+        self.__player_name = "Emil"
     
     def get_player_name(self):
 
         return self.__player_name
+    
+    def set_highscore(self, highscore):
+        f = open("stats\stats-emil.txt", "w")
+        f.write(highscore)
+        f.close()
+        
+    
+    def get_highscore(self):
+        f = open("stats\stats-emil.txt", "r")
+        self.__highscore = f.read()
+        return self.__highscore
+    
+class Iliyan(Player):
+
+    def __init__(self):
+        super().__init__()
+        self.__player_name = self
+
+    def __str__(self):
+
+        return str(self.get_player_name() + " " + self.get_highscore())
+
+    def set_player_name(self):
+
+        self.__player_name = "Iliyan"
+    
+    def get_player_name(self):
+
+        return self.__player_name
+    
+    def set_highscore(self, highscore):
+        f = open("stats\stats-iliyan.txt", "w")
+        f.write(highscore)
+        f.close()
+        
+    
+    def get_highscore(self):
+        f = open("stats\stats-iliyan.txt", "r")
+        self.__highscore = f.read()
+        return self.__highscore
 
 
 
 
 
 
-emil = Emil(12, 3, "Emil")
-print(emil)
+emil = Emil()
+print(emil.get_highscore())
