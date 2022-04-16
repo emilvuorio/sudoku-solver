@@ -1,5 +1,8 @@
 
 import pygame
+import sudoku
+
+sudoku = sudoku.Sudoku()
 
 pygame.init()
 
@@ -12,8 +15,6 @@ def draw_menu_text(text, font, color, surface, horizontal, vertical):
     textrect = textobj.get_rect()
     textrect.topleft = (horizontal, vertical)
     surface.blit(textobj, textrect)
-
-#TUAS_logo = pygame.image.load("TUAS_logo2.png")
 
 
 def main():
@@ -29,15 +30,6 @@ def main():
 
         m_horizontal, m_vertical = pygame.mouse.get_pos()
 
-        if player1_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
-                pass
-        if player2_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
-                pass
-        if quit_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
-                pygame.quit()
         pygame.draw.rect(menu_screen, (255, 204, 0), player1_button)
         pygame.draw.rect(menu_screen, (144, 238, 144), player2_button)
         pygame.draw.rect(menu_screen, (255, 0, 0), quit_button)
@@ -46,9 +38,19 @@ def main():
         menu_screen.blit(font.render('Iliyan', True, (255,255,255)), (100, 200))
         menu_screen.blit(font.render('QUIT', True, (255,255,255)), (15, 500))
 
-        #menu_screen.blit(TUAS_logo, (800, 500))
+
         draw_menu_text("Part of the TUAS OOP course", font2, (255,255,255), menu_screen, 550,330)
         draw_menu_text("Authors: Iliyan Kichukov and Emil Vuorio", font2, (255,255,255), menu_screen, 500,430)
+
+        if player1_button.collidepoint((m_horizontal, m_vertical)):
+            if click:
+                sudoku.start.game
+        if player2_button.collidepoint((m_horizontal, m_vertical)):
+            if click:
+                pass
+        if quit_button.collidepoint((m_horizontal, m_vertical)):
+            if click:
+                pygame.quit()
 
         click = False
         for event in pygame.event.get():
