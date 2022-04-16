@@ -1,7 +1,7 @@
 class Player:
     # All players have the same difficulty
     def __init__(self):
-        self.__difficulty 
+        self.__difficulty = self 
 
     def set_difficulty(self,  difficulty):
         self.__difficulty = difficulty
@@ -44,6 +44,7 @@ class Iliyan(Player):
 
     def __init__(self):
         super().__init__()
+        
         self.__player_name = self
 
     def __str__(self):
@@ -74,5 +75,5 @@ class Iliyan(Player):
 
 
 
-emil = Emil()
+emil = Iliyan()
 print(emil.get_highscore())
