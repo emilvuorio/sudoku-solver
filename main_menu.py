@@ -1,8 +1,10 @@
 
 import pygame
-import sudoku
 
-sudoku = sudoku.Sudoku()
+def launch(player): 
+        import sudoku
+        sudoku_game = sudoku.Sudoku(player)
+        sudoku_game.start_game()
 
 pygame.init()
 
@@ -44,10 +46,10 @@ def main():
 
         if player1_button.collidepoint((m_horizontal, m_vertical)):
             if click:
-                sudoku.start.game
+                launch("Emil")
         if player2_button.collidepoint((m_horizontal, m_vertical)):
             if click:
-                pass
+                launch("Iliyan")
         if quit_button.collidepoint((m_horizontal, m_vertical)):
             if click:
                 pygame.quit()
