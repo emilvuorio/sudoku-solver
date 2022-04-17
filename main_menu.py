@@ -3,8 +3,14 @@
 # Main menu for sudoku game
 
 import pygame
-import sudoku
 
+<<<<<<< HEAD
+=======
+def launch(player): 
+        import sudoku
+        sudoku_game = sudoku.Sudoku(player)
+        sudoku_game.start_game()
+>>>>>>> 94c255e09f021d0cc85f435eb0f5ab5e6f3dc5eb
 
 pygame.init()
 
@@ -53,12 +59,20 @@ def main():
         draw_menu_text("Authors: Iliyan Kichukov and Emil Vuorio", font2, (255,255,255), menu_screen, 500,430)
 
         if player1_button.collidepoint((m_horizontal, m_vertical)):
+<<<<<<< HEAD
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 
                 launch_game("Emil")
         if player2_button.collidepoint((m_horizontal, m_vertical)):
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 launch_game("Iliyan")
+=======
+            if click:
+                launch("Emil")
+        if player2_button.collidepoint((m_horizontal, m_vertical)):
+            if click:
+                launch("Iliyan")
+>>>>>>> 94c255e09f021d0cc85f435eb0f5ab5e6f3dc5eb
         if quit_button.collidepoint((m_horizontal, m_vertical)):
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 pygame.quit()
