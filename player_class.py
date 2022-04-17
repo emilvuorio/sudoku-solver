@@ -42,7 +42,7 @@ class Emil(Player):
         return self.__fav_color
     def set_highscore(self, highscore):
         f = open("stats\stats-emil.txt", "w")
-        f.write(highscore)
+        f.write(str(highscore))
         f.close()
 
     
@@ -81,7 +81,7 @@ class Iliyan(Player):
     
     def set_highscore(self, highscore):
         f = open("stats\stats-iliyan.txt", "w")
-        f.write(highscore)
+        f.write(str(highscore))
         f.close()
         
     

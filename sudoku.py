@@ -261,8 +261,8 @@ class Sudoku:
             if self.is_solved and player_playing:
 
                 score = self.display_score()
-                if self.__player.get_highscore() > score:
-                    self.__player.set_highscore()
+                if int(self.__player.get_highscore()) > score:
+                    self.__player.set_highscore(score)
 
             pygame.display.update()
             
