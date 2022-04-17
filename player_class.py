@@ -1,3 +1,8 @@
+# player_class.py
+# Authors Emil Vuorio and Iliyan Kichukov
+# Player class
+
+
 class Player:
     # All players have the same difficulty
     def __init__(self):
@@ -17,7 +22,7 @@ class Emil(Player):
         super().__init__()
         self.__player_name = "Emil"
 
-        self.__favorite_color = (255,20,40)
+        self.__fav_color = (255,204,0)
 
     def __str__(self):
 
@@ -85,10 +90,3 @@ class Iliyan(Player):
         self.__highscore = f.read()
         return self.__highscore
 
-
-
-
-
-
-emil = Iliyan()
-print(emil.get_highscore())

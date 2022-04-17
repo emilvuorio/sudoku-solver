@@ -1,8 +1,10 @@
+# main_menu.py
+# Authors Emil Vuorio and Iliyan Kichukov
+# Main menu for sudoku game
 
 import pygame
 import sudoku
 
-sudoku = sudoku.Sudoku()
 
 pygame.init()
 
@@ -16,14 +18,22 @@ def draw_menu_text(text, font, color, surface, horizontal, vertical):
     textrect.topleft = (horizontal, vertical)
     surface.blit(textobj, textrect)
 
+def launch_game(player):
+    
+    sudokugame = sudoku.Sudoku(player)
+    sudokugame.make_grid()
+    sudokugame.start_game()
+
 
 def main():
+
+    pygame.display.set_caption('Sudoku Main Menu')
     while True:
         menu_screen.fill((255,255,255))
         menu_background = pygame.image.load("main_menu_background3.png")
         menu_screen.blit(menu_background, (0, 0))
         draw_menu_text("Sudoku game MAIN MENU", font, (255,255,255), menu_screen, 15,20)
-        draw_menu_text("Choose your player:", font2, (255,255,255), menu_screen, 15,130)
+        draw_menu_text("Choose player:", font2, (255,255,255), menu_screen, 15,130)
         player1_button = pygame.Rect(15, 200, 80, 50)
         player2_button = pygame.Rect(100, 200, 100, 50)
         quit_button = pygame.Rect(15, 500, 105, 50)
@@ -43,25 +53,24 @@ def main():
         draw_menu_text("Authors: Iliyan Kichukov and Emil Vuorio", font2, (255,255,255), menu_screen, 500,430)
 
         if player1_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
-                sudoku.start.game
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                
+                launch_game("Emil")
         if player2_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
-                pass
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                launch_game("Iliyan")
         if quit_button.collidepoint((m_horizontal, m_vertical)):
-            if click:
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 pygame.quit()
 
-        click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    click = True
+   
         pygame.display.update()
+        
 
 main()

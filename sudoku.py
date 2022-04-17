@@ -1,5 +1,10 @@
+# sudoku.py
+# Authors Emil Vuorio and Iliyan Kichukov
+# sudoku class
 
-from random import randint, random
+
+
+
 import sys
 import player_class
 import pygame
@@ -90,6 +95,7 @@ class Sudoku:
                             self.__screen.blit(value, ((col+1)*50 +15,(row+1)*50))
                             pygame.display.update()
                             pygame.time.delay(20)
+                            
                             self.solve()
                             
                             if self.is_solved():
@@ -108,21 +114,27 @@ class Sudoku:
         while True:
             self.display_score()
             # Highlights clicked square
-            pygame.draw.rect(self.__screen, self.__highlighted_color, (position[0]*50 + self.__buffer, position[1]*50+ self.__buffer,50 -2*self.__buffer , 50 - 2*self.__buffer))
-            pygame.display.update()
+            if(self.__original_grid[row-1][col-1] == 0):
+                pygame.draw.rect(self.__screen, self.__highlighted_color, (position[0]*50 + self.__buffer, position[1]*50+ self.__buffer,50 -2*self.__buffer , 50 - 2*self.__buffer))
+                pygame.display.update()
             for event in pygame.event.get():
 
                 if event.type == pygame.QUIT:
                     return
+
+                
+                
 
                 if event.type == pygame.KEYDOWN:
                     
                     # If the square is hard coded number
                     if(self.__original_grid[row-1][col-1] != 0):
                         return
-
+                    
                     # 0's ascii value is 48
-                    if(event.key == 48): 
+                    if(event.key == 48):
+                        
+                        
                         self.__grid[row-1][col-1] = event.key - 48
                         pygame.draw.rect(self.__screen, self.__background_color, (position[0]*50 + self.__buffer, position[1]*50+ self.__buffer,50 -2*self.__buffer , 50 - 2*self.__buffer))
                         pygame.display.update()
@@ -186,6 +198,7 @@ class Sudoku:
 
         pygame.init()
         
+        
         pygame.display.set_caption('Sudoku')
         icon = pygame.image.load("sudoku_icon.png")
         pygame.display.set_icon(icon)
@@ -218,7 +231,7 @@ class Sudoku:
 
         
         while True:
-    
+            
             for event in pygame.event.get():
 
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
@@ -248,19 +261,8 @@ class Sudoku:
             if self.is_solved and player_playing:
 
                 score = self.display_score()
-                #if 
+                if self.__player.get_highscore() > score:
+                    self.__player.set_highscore()
 
             pygame.display.update()
             
-	        
-
-
-class Generator(Sudoku):
-
-    def __init__(self):
-        Sudoku.__init__()
-
-
-sudoku = Sudoku("Iliyan")
-sudoku.make_grid()
-sudoku.start_game()
