@@ -193,7 +193,6 @@ class Sudoku:
         return current_time
         
         
-        
     def start_game(self):
 
         pygame.init()
@@ -261,6 +260,7 @@ class Sudoku:
             if self.is_solved and player_playing:
 
                 score = self.display_score()
+                
                 if int(self.__player.get_highscore()) > score:
                     self.__player.set_highscore(score)
 

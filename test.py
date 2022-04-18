@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-global amount
-amount = 0
-global board
+
+
 #board = [[0,0,0,0,0,0,0,0,0],
  #           [0,0,0,0,0,0,0,0,0],
   #          [0,0,0,0,0,0,0,0,0],
@@ -11,18 +9,18 @@ global board
        #     [0,0,0,0,0,0,0,0,0],
         #    [0,0,0,0,0,0,0,0,0]]
 
-board = [[4,0,0,1,0,0,0,0,0],
-[0,0,0,0,0,0,0,5,0],
-[0,7,0,0,4,0,3,6,0],
-[0,2,0,0,0,0,0,0,1],
-[0,0,0,0,3,0,0,0,5],
-[0,0,6,8,0,0,2,3,0],
-[0,0,8,0,0,9,0,0,0],
-[0,0,0,0,0,0,0,0,2],
-[0,6,0,0,1,0,7,4,0]]
+board = [[0,0,0,0,0,0,0,0,0],
+[9,3,0,2,0,0,0,8,7],
+[5,0,4,0,0,0,0,0,6],
+[0,0,0,4,0,0,0,6,0],
+[7,5,0,0,0,0,1,0,8],
+[0,2,8,0,0,0,0,9,0],
+[0,0,0,0,2,0,9,0,0],
+[8,9,0,0,0,5,0,0,0],
+[0,7,0,0,1,0,0,0,0]]
 
-def generate():
-    global board
+def generate(board):
+    
     import random
     draw_sudoku()
   
@@ -35,27 +33,13 @@ def generate():
                 if check_possible(random_row, random_column, random_number):
                     board[random_row][random_column] = random_number
 
-    draw_sudoku()
-
-=======
-import time
-
-global board
->>>>>>> eda0b8139d6701d811c8445cfa7ff26a263f7d33
-
-board = [[8,0,0,0,0,0,0,0,0],
-[0,0,3,6,0,0,0,0,0],
-[0,7,0,0,9,0,2,0,0],
-[0,5,0,0,0,7,0,0,0],
-[0,0,0,0,4,5,7,0,0],
-[0,0,0,1,0,0,0,3,0],
-[0,0,1,0,0,0,0,6,8],
-[0,0,8,5,0,0,0,1,0],
-[0,9,0,0,0,0,4,0,0]]
+    draw_sudoku(board)
 
 
-def check_possible(y, x, n):
-    global board
+
+
+def check_possible(board, y, x, n):
+    
     for i in range(0,9):
         if board[y][i] == n:
             return False
@@ -71,35 +55,28 @@ def check_possible(y, x, n):
                 return False
     return True
 
-def solve():
-    global amount
-    global board
-    import time
+def solve(board):
+    
+    
     for y in range(9):
         for x in range(9):
             if board[y][x] == 0:
                 for n in range(1,10):
-                    if check_possible(y,x,n):
+                    if check_possible(board, y,x,n):
                         board[y][x] = n
                         #draw_sudoku()
                         #time.sleep(0.1)
-                        solve()
+                        solve(board)
                         board[y][x] = 0
                 return
-    draw_sudoku()
-    
-        
-
-
-    draw_sudoku()
-    print("Solved in " + "--- %s seconds ---" % (time.time() - start_time))
+    draw_sudoku(board)
     
     
     input()
     
         
-def draw_sudoku():
-    global board
+def draw_sudoku(board):
+
     print("+" + "---+"*9)
     for i, row in enumerate(board):
         print(("|" + " {}   {}   {} |"*3).format(*[x if x != 0 else " " for x in row]))
@@ -108,14 +85,7 @@ def draw_sudoku():
         else:
             print("+" + "   +"*9)
 
-start_time = time.time()
-print(start_time)
-draw_sudoku()
-<<<<<<< HEAD
+draw_sudoku(board)
 #generate()
-=======
-time.sleep(0.3)
->>>>>>> eda0b8139d6701d811c8445cfa7ff26a263f7d33
-solve()
-print(start_time)
+solve(board)
 
